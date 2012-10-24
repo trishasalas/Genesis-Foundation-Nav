@@ -21,12 +21,7 @@ class GenesisFoundationNav {
 		// Output the nav menu in the theme location
 		add_filter( 'wp_nav_menu_args', array( &$this, 'custom_nav_menu_args' ) );
 
-		if ( 'genesis' == basename( TEMPLATEPATH ) ) {
-			// Remove Genesis Nav wrapper divs
-			add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 15, 3 );
-
-			add_action( 'after_setup_theme', array( &$this, 'move_menu' ) );
-		}
+		add_action( 'after_setup_theme', array( &$this, 'cleanup' ) );
 
 		add_filter( 'wp_nav_menu_objects', array( &$this, 'add_parent_class' ) );
 		add_filter( 'wp_nav_menu_objects', array( &$this, 'add_active_class' ) );
@@ -37,6 +32,16 @@ class GenesisFoundationNav {
 		add_action( 'wp_enqueue_scripts', array( &$this, 'disable_scripts' ), 100 );
 	}
 
+	function cleanup() {
+
+			// Remove Genesis Nav wrapper divs
+			add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 1, 3 );
+
+			$this->move_menu();
+
+
+	}
+
 	function custom_nav_menu_args( $args ) {
 
 		// Define nav menu args
@@ -44,7 +49,7 @@ class GenesisFoundationNav {
 			$args['container']       = 'nav';
 			$args['container_class'] = 'top-bar';
 			$args['menu_id']         = 'foundation-menu';
-			$title                   = '<ul><li class="name"><h1><a href="#">' . get_bloginfo('name') . '</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>';
+			$title                   = '<ul><li class="name"><h1><a href="#">' . get_bloginfo( 'name' ) . '</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>';
 			$args['items_wrap']      = $title . '<section><ul class="left"><li class="divider"></li>%3$s</ul></section>';
 			$args['walker']          = new Foundation_Walker();
 		} //end if
