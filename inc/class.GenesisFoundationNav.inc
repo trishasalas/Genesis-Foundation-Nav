@@ -44,7 +44,7 @@ class GenesisFoundationNav {
 			$args['container']       = 'nav';
 			$args['container_class'] = 'top-bar';
 			$args['menu_id']         = 'foundation-menu';
-			$title                   = '<ul><li class="name"><h1><a href="#">Title</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>';
+			$title                   = '<ul><li class="name"><h1><a href="#">' . get_bloginfo('name') . '</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>';
 			$args['items_wrap']      = $title . '<section><ul class="left"><li class="divider"></li>%3$s</ul></section>';
 			$args['walker']          = new Foundation_Walker();
 		} //end if
