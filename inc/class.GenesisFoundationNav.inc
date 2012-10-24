@@ -33,11 +33,13 @@ class GenesisFoundationNav {
 	}
 
 	function cleanup() {
+		  if('genesis' == basename( get_template_directory())){
+				// Remove Genesis Nav wrapper divs
+				add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 1, 3 );
 
-			// Remove Genesis Nav wrapper divs
-			add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 1, 3 );
+				$this->move_menu();
+			}
 
-			$this->move_menu();
 
 
 	}
