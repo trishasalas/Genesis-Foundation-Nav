@@ -19,6 +19,12 @@ It should work with some modifications needed. For example, it works with Twenty
 
  
 == Changelog ==
+
+== 0.2 ==
+
+Added top_bar_name_html filter to allow overriding the HTML output of the branding area in the top bar menu
+Removed some unnecessary CSS
+
 == 0.1 ==
 
 Initial version

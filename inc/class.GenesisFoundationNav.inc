@@ -33,13 +33,12 @@ class GenesisFoundationNav {
 	}
 
 	function cleanup() {
-		  if('genesis' == basename( get_template_directory())){
-				// Remove Genesis Nav wrapper divs
-				add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 1, 3 );
+		if ( 'genesis' == basename( get_template_directory() ) ) {
+			// Remove Genesis Nav wrapper divs
+			add_filter( 'genesis_do_nav', array( &$this, 'remove_structural_wraps' ), 1, 3 );
 
-				$this->move_menu();
-			}
-
+			$this->move_menu();
+		}
 
 
 	}
@@ -51,7 +50,7 @@ class GenesisFoundationNav {
 			$args['container']       = 'nav';
 			$args['container_class'] = 'top-bar';
 			$args['menu_id']         = 'foundation-menu';
-			$title                   = '<ul><li class="name"><h1><a href="#">' . get_bloginfo( 'name' ) . '</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>';
+			$title                   = apply_filters( 'top_bar_name_html', '<ul><li class="name"><h1><a href="#">' . get_bloginfo( 'name' ) . '</a></h1></li><li class="toggle-topbar"><a href="#"></a></li></ul>' );
 			$args['items_wrap']      = $title . '<section><ul class="left"><li class="divider"></li>%3$s</ul></section>';
 			$args['walker']          = new Foundation_Walker();
 		} //end if
