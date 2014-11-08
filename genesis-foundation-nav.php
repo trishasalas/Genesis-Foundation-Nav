@@ -20,3 +20,5 @@ if ( ! defined( 'GFN_PLUGIN_URL' ) )
 require_once GFN_PLUGIN_DIR . 'inc/class.GenesisFoundationNav.inc';
 
 new GenesisFoundationNav();
+
+?>
